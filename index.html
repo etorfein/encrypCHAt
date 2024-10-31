@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/titleicon.png" type="image/x-icon">
+    <title>encrypCHAt</title>
+</head>
+<body>
+    <audio id="siteLoadSound" src="audios/traphouse.mp3" preload="auto"></audio>
+    <div id="logoAnimation" class="logo-animation">
+        <img src="images/titleicon.png" alt="Logo" class="logo">
+        <span class="reveal-text">encrypCHAt</span>
+        <span class="reveal-text2">by etorphine</span>
+    </div>
+    <div id="mainContent" class="hidden">
+        <div class="parallax"></div>
+        <div class="content">
+            <div class="background-image"></div>
+            <div class="container">
+                <h1 id="chatroomTitle"></h1>
+                <div class="menu">
+                    <img src="images/titleicon.png" alt="Top Image" class="top-image">
+                    <div class="input-group">
+                        <input type="text" id="username" placeholder="user ( optional )">
+                        <input type="text" id="roomKey" placeholder="room key">
+                    </div>
+                    <div class="button-group">
+                        <button id="joinButton" onclick="joinRoom()">join sanctum</button>
+                        <button id="createButton" onclick="createRoom()">create sanctum</button>
+                    </div>
+                    <div id="usernameError" class="notification hidden"></div>
+                    <div class="audio-controls">
+                        <img id="audioImage" src="images/hai.jpg" alt="Audio Control" class="audio-image">
+                        <div id="audioName" class="audio-name"></div>
+                        <div class="control-logos">
+                            <img id="prevLogo" src="images/prev.png" alt="Previous" class="control-logo">
+                            <img id="playLogo" src="images/play.png" alt="Play" class="control-logo">
+                            <img id="stopLogo" src="images/stop.png" alt="Stop" class="control-logo" style="display: none;">
+                            <img id="nextLogo" src="images/next.png" alt="Next" class="control-logo">
+                        </div>
+                        <div class="audio-slider">
+                            <span id="currentTime">0:00</span>
+                            <input type="range" id="progressBar" value="0" min="0" step="1">
+                            <span id="duration">0:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="chat" class="hidden">
+                    <div class="messages-container" id="messages"></div>
+                    <div class="message-input">
+                        <input type="text" id="messageInput" placeholder="type a message" onkeypress="handleKeyPress(event)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const titles = ["root@etorphine:~$", "root@disgustwin:~$"];
+            let currentIndex = 0;
+
+            setInterval(() => {
+                document.title = titles[currentIndex];
+                currentIndex = (currentIndex + 1) % titles.length;
+            }, 3000);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const logoAnimation = document.getElementById('logoAnimation');
+                const mainContent = document.getElementById('mainContent');
+                logoAnimation.style.display = 'none';
+                mainContent.classList.remove('hidden');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

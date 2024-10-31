@@ -1,0 +1,364 @@
+@font-face {
+    font-family: 'PixeloidSans';
+    src: url('font/PixeloidSans-mLxMm.ttf') format('truetype');
+  }
+  
+  body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-y: auto;
+      font-family: 'PixeloidSans', sans-serif;
+  }
+  
+  .content {
+      height: auto;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+  }
+  
+  .background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: top center;
+      width: 100%;
+      height: 70%;
+      background-image: url('images/cool.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: swing 5s ease-in-out infinite;
+      z-index: -1;
+  }
+  
+  @keyframes swing {
+      0% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+      100% { transform: rotate(-5deg); }
+  }
+  
+  body {
+    background: linear-gradient(135deg, #1a1a1a, #4d4d4d, #1a1a1a, #4d4d4d);
+    background-size: 400% 400%;
+    color: #e0e0e0;
+    text-align: center;
+    animation: gradientMove 10s ease infinite;
+  }
+  
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(44, 44, 44, 0.9);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #dcdcdc, #a9a9a9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  .input-group {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+  }
+  
+  button-group {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+  }
+  
+  .audio-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+  }
+  
+  .control-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+      margin-top: 10px; 
+  }
+  
+  .control-logo {
+      margin: 0 5px;
+  }
+  
+  .menu input[type="text"] {
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid #888;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'PixeloidSans', sans-serif;
+    transition: border-color 0.3s;
+  }
+  
+  .menu input[type="text"]:focus {
+    border-color: #aaa;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  
+  #chat {
+    border-top: 1px solid #888;
+    margin-top: 20px;
+  }
+  
+  .messages-container {
+    border: 2px solid #888;
+    height: 300px;
+    overflow-y: auto;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #3c3c3c;
+  }
+  
+  .messages-container::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .messages-container::-webkit-scrollbar-track {
+    background: #2c2c2c;
+    border-radius: 5px;
+  }
+  
+  .messages-container::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 5px;
+  }
+  
+  .messages-container::-webkit-scrollbar-thumb:hover {
+    background: #777;
+  }
+  
+  .message-input {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .message-input input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #888;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'PixeloidSans', sans-serif;
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    transition: border-color 0.3s;
+  }
+  
+  .message-input input[type="text"]:focus {
+    border-color: #aaa;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  
+  .message {
+    padding: 8px;
+    border-radius: 5px;
+    margin: 5px 0;
+    background-color: #888; 
+    color: white;
+    word-wrap: break-word;
+    text-align: left;
+  }
+  
+  .message.self {
+    background-color: #555; 
+  }
+  
+  .notification {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #ff4d4d; 
+      color: white;
+      border-radius: 5px;
+      text-align: center;
+      display: none; 
+      animation: slideDownFadeIn 0.5s ease-out; 
+  }
+  
+  .notification:not(.hidden) {
+      display: block; 
+  }
+  
+  .hidden {
+      display: none;
+  }
+  
+  input[type="text"] {
+      width: 220px;
+      padding: 12px;
+      margin: 5px;
+      border: 2px solid transparent;
+      border-radius: 25px;
+      font-size: 1em;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+      background: linear-gradient(white, white) padding-box,
+                  linear-gradient(to right, #333, #666) border-box;
+  }
+  
+  input[type="text"]:focus {
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(51, 51, 51, 0.2);
+      outline: none;
+      background: linear-gradient(white, white) padding-box,
+                  linear-gradient(to right, #666, #333) border-box;
+  }
+  
+  button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      background-color: #555;
+      color: white;
+      font-family: 'PixeloidSans', sans-serif;
+      transition: background-color 0.3s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+      outline: none;
+  }
+  
+  button:hover {
+      background-color: #777;
+      transform: scale(1.05);
+  }
+  
+  button:active {
+      transform: scale(0.95);
+  }
+  
+  button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('images/okaii.png');
+      background-size: 100% 100%; 
+      background-position: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+  }
+  
+  button:hover::before {
+      opacity: 0.5;
+  }
+  
+  button > span {
+      position: relative;
+      z-index: 1;
+  }
+  
+  #roomInfo {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #444;
+      color: #fff;
+      border-radius: 5px;
+      font-style: italic;
+  }
+  
+  .custom-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+  }
+  
+  .custom-notification.show {
+      opacity: 1;
+  }
+  
+  .logo-animation {
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: slideIn 2s forwards;
+      opacity: 0;
+  }
+  
+  .logo-animation img {
+      width: 150px;
+      height: auto;
+      margin: 10px;
+      transition: transform 1s ease-in-out;
+  }
+  
+  .logo-animation img:hover {
+      transform: rotate(360deg) scale(1.1);
+  }
+  
+  .logo-animation p {
+      font-size: 1.2em;
+      color: white;
+      margin-top: 10px;
+      text-align: center;
+      animation: fadeText 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes slideIn {
+      0% { opacity: 0; transform: translate(-50%, -60%); }
+      100% { opacity: 1; transform: translate(-50%, -50%); }
+  }
+  
+  @keyframes fadeText {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+  }
+  
